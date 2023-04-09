@@ -1,4 +1,4 @@
-#WeeklyInventory
+#WeeklyInventory  
 Brief Description: By combining Excel and Golang, this program records inventory (items and quantities) and views the previous inventory record.
 
 This is a program written in the Go language, whose main function is to read the old item data from an Excel file, import the new item data into the Excel file, and remove the old data in column B.
