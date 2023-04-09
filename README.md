@@ -1,3 +1,18 @@
+#WeeklyInventory
+Brief Description: By combining Excel and Golang, this program records inventory (items and quantities) and views the previous inventory record.
+
+This is a program written in the Go language, whose main function is to read the old item data from an Excel file, import the new item data into the Excel file, and remove the old data in column B.
+
+The program will ask the user to input item data in the format of "item category, quantity", where the quantity must be a number. The program will parse the user's input data and import the quantity into the corresponding column of the item category in the Excel file. For example, if the user inputs "3shampoo", the program will import the quantity 3 into the D5 column (shampoo column) of the Excel file.
+
+The main logic of the program is implemented in the PutInto() function, which imports the quantity into the corresponding column of the Excel file based on the item category. The program also includes the Remove() function, which removes the old data in column B, and the Replace() function, which places the old data in column D into column B to replace the original data.
+
+Finally, the program will save the changes to the Excel file and display a success message.
+
+User Guide: Example of user input data: 2023/02/03,3alcohol,7hand soap,12tissue paper,4body wash,8shampoo,2cotton pad,6big toilet paper,9small toilet paper. The date format is YYYY/MM/DD. Each item starts with a number followed by the item name, separated by a comma.
+
+Feedback and Suggestions: If there are any issues or suggestions regarding the program, please feel free to contact me at tioka.speed@gmail.com.
+
 # WeeklyInventory
 簡易描述: 藉由串接Excel以及Golang，來完成紀錄庫存(物品以及數量)以及檢視上回庫存紀錄
 
