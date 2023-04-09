@@ -1,4 +1,4 @@
-#WeeklyInventory  
+# WeeklyInventory  
 Brief Description: By combining Excel and Golang, this program records inventory (items and quantities) and views the previous inventory record.
 
 This is a program written in the Go language, whose main function is to read the old item data from an Excel file, import the new item data into the Excel file, and remove the old data in column B.
@@ -13,7 +13,7 @@ User Guide: Example of user input data: 2023/02/03,3alcohol,7hand soap,12tissue 
 
 Feedback and Suggestions: If there are any issues or suggestions regarding the program, please feel free to contact me at tioka.speed@gmail.com.
 
-# WeeklyInventory
+# 每周庫存紀錄
 簡易描述: 藉由串接Excel以及Golang，來完成紀錄庫存(物品以及數量)以及檢視上回庫存紀錄
 
 這是一個使用 Go 語言編寫的程式，主要的功能是從 Excel 檔案中讀取舊的物品資料，然後將新的物品資料導入 Excel 檔案中，並將 B 欄位的舊資料移除。
