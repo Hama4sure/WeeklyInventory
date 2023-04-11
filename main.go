@@ -55,7 +55,7 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-
+	RecalcCell(f) //重新計算Excel內原有的公式
 	fmt.Println("succeed")
 }
 
@@ -128,4 +128,12 @@ func SaveOldDatas(f *excelize.File) []string { //將D欄的資料儲存起來供
 		last = append(last, cell)
 	}
 	return last
+}
+
+func RecalcCell(f *excelize.File) {
+	c := "C"
+	for i := 3; i < 20; i++ {
+		recal := fmt.Sprintf("%s%v", c, i)
+		f.GetCellValue("Sheet1", recal)
+	}
 }
