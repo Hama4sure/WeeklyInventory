@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"strconv"
+	"strings"
+	"time"
 	"unicode"
 
 	"github.com/xuri/excelize/v2"
@@ -26,29 +27,27 @@ func main() {
 	var str string
 	fmt.Printf("請輸入，並以','做為結尾:") //使用者輸入資料
 	fmt.Scan(&str)
-	num := ""
-	item := ""
 
-	for k, v := range str { //解析分類資料。數字=數量 文字=物品類別 ','=分隔符號
-		if k < 10 { //時間格式為2023/03/17, 十位數
-			item += string(v)
-			continue
+	input := strings.Split(str, ",")
+	for _, items := range input { //解析分類資料。數字=數量 文字=物品類別 ','=分隔符號
+		num := ""
+		item := ""
+		for _, v := range items {
+			if unicode.IsNumber(v) || v == '.' {
+				num += string(v)
+			} else {
+				item += string(v)
+			}
 		}
 
-		if unicode.IsNumber(v) {
-			num += string(v)
-
-		} else if v == ',' {
-			c, _ := strconv.Atoi(num)
-			PutInto(f, item, c)
-			num = ""
-			item = ""
-
-		} else {
-			item += string(v)
-		}
+		PutInto(f, item, num)
+		num = ""
+		item = ""
 
 	}
+	t := time.Now()
+	dateStr := t.Format("01/02")
+	PutInto(f, dateStr, "")
 
 	err = f.SaveAs("inventory.xlsx") //儲存變更
 	if err != nil {
@@ -59,7 +58,7 @@ func main() {
 	fmt.Println("succeed")
 }
 
-func PutInto(f *excelize.File, name string, num int) { //經解析後的單筆資料分類導入指定的欄位
+func PutInto(f *excelize.File, name string, num string) { //經解析後的單筆資料分類導入指定的欄位
 	switch name {
 	case "沐浴乳":
 		f.SetCellValue("Sheet1", "D4", num)
@@ -132,6 +131,7 @@ func SaveOldDatas(f *excelize.File) []string { //將D欄的資料儲存起來供
 
 func RecalcCell(f *excelize.File) {
 	c := "C"
+
 	for i := 3; i < 20; i++ {
 		recal := fmt.Sprintf("%s%v", c, i)
 		f.GetCellValue("Sheet1", recal)
