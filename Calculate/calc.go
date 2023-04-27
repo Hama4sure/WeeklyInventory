@@ -10,8 +10,10 @@ import (
 
 func Orderinventory(f *excelize.File, item, col, amount string, a *[]string) {
 	amountfloat, _ := strconv.ParseFloat(amount, 64)
+	fmt.Println("amountfloat:", amountfloat)
+	fmt.Println("map:", types.Centralmap[item])
 	if amountfloat <= types.Centralmap[item] {
-		sentance := fmt.Sprintf("%s一箱\n", item)
+		sentance := fmt.Sprintf("%s一箱,\n", item)
 		*a = append(*a, sentance)
 	}
 }

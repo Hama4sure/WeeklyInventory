@@ -2,7 +2,11 @@ package types
 
 var Centralmap = make(map[string]float64)
 
-func defineInventory() {
+func init() {
+	DefineInventory()
+}
+
+func DefineInventory() {
 	Centralmap["沐浴乳"] = 2
 	Centralmap["洗髮精"] = 2
 	Centralmap["酒精"] = 2
